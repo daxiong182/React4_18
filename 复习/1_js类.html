@@ -13,13 +13,6 @@
 
 
 
-
-
-
-
-
-
-
     <script>
 
         /*
@@ -60,9 +53,17 @@
 
 
 
-        class Dog{
-
+       class Car{
+        constructor(name,price,wheel){
+            this.name=name;
+            this.price=price;
+            // this.wheel=4;
         }
+        //类中可以写赋值语句，如下代码的含义是给Car添加一个属性 名为a 值为 1
+        wheel=4
+    }
+
+
 
         //创建一个Person的实例对象
         const p1=new Person('tom',18);
@@ -75,6 +76,12 @@
         console.log(stu1);
         stu1.speak()
         
+       console.log('===========================');
+
+       const c1=new Car('奔驰c63',199)
+       console.log(c1);
+       const c2=new Car('宝马',299)
+       console.log(c2);
 
 
 

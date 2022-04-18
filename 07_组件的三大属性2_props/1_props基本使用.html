@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>props基本使用</title>
+</head>
+<body>
+    
+
+
+  <!-- 准备容器 -->
+  <div id="test"></div>
+  <div id="test2"></div>
+
+  <!-- react核心库 -->
+  <script  src="../js/react.development.js"></script>
+  <!-- react-dom 用于支持react操作DOM -->
+  <script src="../js/react-dom.development.js"></script>
+  <!-- 引入babel，用于将jsx转为js -->
+  <script src="../js/babel.min.js"></script>
+  
+  
+
+
+  <script type="text/babel">
+
+      //创建类组件
+      class Person extends React.Component{
+
+            render(){
+                console.log(this);
+                return (
+                    <ul>
+                        <li>姓名:{this.props.name}</li>
+                        <li>性别:{this.props.sex}</li>
+                        <li>年龄:{this.props.age}</li>
+                    </ul>
+                )
+            }
+      }
+
+      //渲染组件到页面
+      ReactDOM.render(<Person nam='tom' sex='女' age='18'/>,document.getElementById('test'));
+
+      ReactDOM.render(<Person nam='老刘' sex='男' age='47'/>,document.getElementById('test2'))
+    
+      
+
+ </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
