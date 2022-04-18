@@ -1,0 +1,9 @@
+XML早期用于存储和数据传播 因为需要定义和解析html标签 后期被JSON代替
+
+XML是严格模式的HTML (只能有一个根标签 标签名区分大小写 标签必须闭合 ...) 例:
+
+<student>
+  <name>张三</name>
+  <age>18</age>
+</student>
+

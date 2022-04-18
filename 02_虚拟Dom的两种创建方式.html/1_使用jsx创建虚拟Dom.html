@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用jsx创建虚拟Dom</title>
+</head>
+<body>
+    
+
+
+
+
+
+
+
+
+<div id="test"></div>
+
+
+
+
+<!-- react核心库 -->
+<script  src="../js/react.development.js"></script>
+<!-- react-dom 用于支持react操作DOM -->
+<script src="../js/react-dom.development.js"></script>
+<!-- 引入babel，用于将jsx转为js -->
+<script src="../js/babel.min.js"></script>
+
+
+
+<!-- 注意cdn方式引入React依赖包后 下方为Jsx语法: type='text/babel' -->
+
+<script type="text/babel">
+
+const trueDom=document.querySelector('#test')
+
+//1.jsx创建虚拟Dom  所谓的jsx语法 就是下面这个VDOM
+const VDOM=<h1 id='title'>
+        <span>你好呀 jsx</span>
+    </h1>
+
+console.log(typeof VDOM); //object : 揍是一个一般的js对象 属性方法可以.调用
+console.log('虚拟dom:',VDOM); 
+console.dir(trueDom);
+// debugger;
+
+//2.渲染虚拟Dom到页面
+ReactDOM.render(VDOM,document.getElementById('test')); //参数1.虚拟Dom 参数2.容器节点
+
+/*
+    关于虚拟Dom：
+        1.本质是Object类型对象
+        2.虚拟Dom比较‘轻’ 真实Dom比较‘重’ 因为虚拟Dom是React内部在使用，无需添加真实Dom上的所有属性和方法
+        3.虚拟Dom最终会被转化为真实Dom 才能在页面展现
+*/
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

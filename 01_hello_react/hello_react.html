@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo1</title>
+</head>
+<body>
+    
+
+
+<div id="test"></div>
+
+
+
+
+<!-- react核心库 -->
+<script  src="../js/react.development.js"></script>
+<!-- react-dom 用于支持react操作DOM -->
+<script src="../js/react-dom.development.js"></script>
+<!-- 引入babel，用于将jsx转为js -->
+<script src="../js/babel.min.js"></script>
+
+
+
+<!-- 注意cdn方式引入React依赖包后 下方为Jsx语法: type='text/babel' -->
+
+<script type="text/babel">
+
+//1.创建虚拟Dom 
+const VDOM=<h1>Hello,React</h1>
+const VDOM2=<h1>Hello,React 17.0.2</h1>
+//2.渲染虚拟Dom到页面
+
+ReactDOM.render(VDOM,document.getElementById('test'));//参数1.虚拟Dom 参数2.容器节点
+
+//注意jsx中不能像下方这样追加虚拟Dom -> VDOM2, 因为ReactDOM.render() 是替换动作 不是追加动作！！
+
+// ReactDOM.render(VDOM2,document.getElementById('test'));
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
