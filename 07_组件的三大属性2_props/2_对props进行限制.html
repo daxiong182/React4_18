@@ -21,7 +21,8 @@
   <script src="../js/react-dom.development.js"></script>
   <!-- 引入babel，用于将jsx转为js -->
   <script src="../js/babel.min.js"></script>
-  
+  <!-- 引入prop-types,用于对组件标签属性进行限制 -->
+  <script src="../js/prop-types.js"></script>
   
 
 
@@ -31,6 +32,10 @@
       class Person extends React.Component{
             render(){
                 const {name,age,sex}=this.props
+
+                //props是只读的
+                // × this.props.name='jack';
+
                 return (
                     <ul>
                         <li>姓名:{name}</li>
@@ -40,15 +45,32 @@
                 )
             }
       }
+      
+      //对标签属性进行类型限制
+      Person.propTypes={
+        name:PropTypes.string.isRequired,
+        sex:PropTypes.string,
+        age:PropTypes.number,
+        speak:PropTypes.func
+      }
 
+      //对标签属性进行必要性限制
+      Person.defaultProps={
+          sex:'不男不女',
+          age:18
+      }
       const p={name:'老刘',age:18,sex:'女'}
       //渲染组件到页面
-      ReactDOM.render(<Person name='tom' sex='女' age='18'/>,document.getElementById('test'));
-      ReactDOM.render(<Person name='Jerry' sex='男' age='19'/>,document.getElementById('test2'));
+      ReactDOM.render(<Person name="tom" sex='女' age={18} speak={speak}/>,document.getElementById('test'));
+      ReactDOM.render(<Person name='Jerry'  age={19}/>,document.getElementById('test2'));
 
       ReactDOM.render(<Person {...p}/>,document.getElementById('test3'))
-    
-                  
+      
+      function speak(){
+          console.log('我说话了');
+      }          
+
+
 
  </script>
 
