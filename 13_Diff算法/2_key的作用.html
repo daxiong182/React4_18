@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>key的作用</title>
+</head>
+<body>
+    
+
+
+
+<!-- 准备容器 -->
+<div id="test"></div>
+
+
+<!-- react核心库 -->
+<script  src="../js/new/react.development.js"></script>
+<!-- react-dom 用于支持react操作DOM -->
+<script src="../js/new/react-dom.development.js"></script>
+<!-- 引入babel，用于将jsx转为js -->
+<script src="../js/new/babel.min.js"></script>
+<!-- 引入prop-types,用于对组件标签属性进行限制 -->
+<script src="../js/new/prop-types.js"></script>
+
+
+
+<script type="text/babel">
+
+    //Diff算法比对新旧虚拟DOM的依据是 key  当key值存在时比对内容，内容相同直接使用旧虚拟DOM 不做重新渲染，内容不同用新虚拟DOM替换原来的并渲染。key值不存在时 直接渲染新的虚拟DOM到页面
+
+    class Person extends React.Component{
+
+        state={
+            persons:[
+                {id:1,name:'小张',age:18},
+                {id:2,name:'小李',age:16},
+            ]
+        }
+
+        add=()=>{
+            const {persons}=this.state
+            const p={id:persons.length+1,name:'小王',age:20}
+            this.setState({persons:[p,...persons]})
+        }
+
+        render(){
+            return(
+                <div>
+                    <h2>展示人员信息</h2>
+                    <button onClick={this.add}>添加一个小王</button>
+                    <h3>使用index索引值作为key</h3>
+                <ul>
+                    {
+                        this.state.persons.map((personObj,index)=>{
+                            return <li key={index}>{personObj.name}--{personObj.age} <input type="text" /></li>
+                        })
+                    }
+                </ul>
+                <hr/>
+                <hr/>
+                <h3>使用id作为key</h3>
+                <ul>
+                    {
+                        this.state.persons.map((personObj)=>{
+                            return <li key={personObj.id}>{personObj.name}--{personObj.age} <input type="text"/></li>
+                        })
+                    }
+                </ul>
+            </div>
+            )
+        }
+    }
+
+
+
+    ReactDOM.render(<Person/>,document.querySelector('#test'))
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -96,18 +96,25 @@
         // UNSAFE_componentWillUpdate(){
         //     console.log('Couont-componentWillUpdate');
         // }
-        //组件更新完毕时的钩子
-        componentDidUpdate(){
-            console.log('Count-componentDidUpdate');
-        }
-        
+
+        //在 render() 和componentDidUpdate()之间执行 获取更新前的快照信息
+         getSnapshotBeforeUpdate(){
+             console.log('getSnapshotBeforeUpdate');
+             //在我更新页面之前 你有什么要交代的吗 赶快给我 我传下去
+             return '凶手是 熊二'
+         }
+
+        //组件更新完毕时的钩子 参数1.preprops  2.prestate
+        componentDidUpdate(preprops,prestate,snapshotValue){
+            console.log('Count-componentDidUpdate',preprops,prestate,snapshotValue);
+        }        
 
 
     }
 
 
 
-    ReactDOM.render(<Count count={100}/>,document.querySelector('#test'))
+    ReactDOM.render(<Count count={100} name='张三'/>,document.querySelector('#test'))
 
 
 </script>

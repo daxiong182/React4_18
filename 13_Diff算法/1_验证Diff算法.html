@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证Diff算法</title>
+</head>
+<body>
+    
+
+
+<!-- 准备容器 -->
+<div id="test"></div>
+
+
+<!-- react核心库 -->
+<script  src="../js/new/react.development.js"></script>
+<!-- react-dom 用于支持react操作DOM -->
+<script src="../js/new/react-dom.development.js"></script>
+<!-- 引入babel，用于将jsx转为js -->
+<script src="../js/new/babel.min.js"></script>
+<!-- 引入prop-types,用于对组件标签属性进行限制 -->
+<script src="../js/new/prop-types.js"></script>
+
+
+
+<script type="text/babel">
+    //验证方式：span标签的内容每秒变换一次。手动向input框中输入内容 如果render()函数没有Diff比对 全局渲染 那么1s后 input框中的内容也将因为重新渲染而被清空。如果有Diff比对算法 将只重绘改变的部分 input框中的内容将被保留。
+    //如上 验证Diff比对算法存在
+    class Time extends React.Component{
+        state={date:new Date()}
+
+        componentDidMount(){
+            setInterval(()=>{
+                this.setState({
+                    date:new Date()
+                })
+            },1000)
+        }
+
+        render(){
+            return(
+                <div>                  
+                    <h1>hello</h1>
+                    <input type="text"/>&nbsp;&nbsp;
+                    <span>现在是:{this.state.date.toTimeString()}</span>
+                </div>
+            )
+        }
+
+
+    }
+
+
+
+
+    ReactDOM.render(<Time/>,document.querySelector('#test'))
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
