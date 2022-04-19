@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React生命周期旧</title>
+</head>
+<body>
+    
+
+<!-- 准备容器 -->
+<div id="test"></div>
+
+
+<!-- react核心库 -->
+<script  src="../js/new/react.development.js"></script>
+<!-- react-dom 用于支持react操作DOM -->
+<script src="../js/new/react-dom.development.js"></script>
+<!-- 引入babel，用于将jsx转为js -->
+<script src="../js/new/babel.min.js"></script>
+<!-- 引入prop-types,用于对组件标签属性进行限制 -->
+<script src="../js/new/prop-types.js"></script>
+
+
+
+<script type="text/babel">
+
+    class Count extends React.Component{
+
+        //构造器
+        constructor(props){
+            console.log('Count-constructor');
+            super(props)
+            this.state={count:0}
+        }
+
+        add=()=>{
+            //获取原状态
+            const{count}=this.state
+            //更新原状态
+            this.setState({count:count+1})
+        }
+
+        death=()=>{
+            ReactDOM.unmountComponentAtNode(document.querySelector('#test'))
+        }
+
+        force=()=>{
+            //不修改状态数据 强制更新一下
+            this.forceUpdate();
+        }
+        //得到一个派生的状态 从props (使用场景: 如果state的值在任何情况下都取决于props 可以使用该钩子)
+       static getDerivedStateFromProps(props){
+           console.log('props',props);
+            console.log('getDerivedStateFromProps') 
+            //一旦返回状态对象 就把状态更新影响了 永远无法更改状态
+            // return props
+            return null
+        }
+
+        //组件将要挂载
+        // UNSAFE_componentWillMount(){
+        //     console.log('Count-componentWillMount');
+        // }
+
+        //组件渲染
+        render(){
+            console.log('Count-render');
+            return(
+            <div>
+                <h2>当前求和为:{this.state.count}</h2>
+                <button onClick={this.add}>点我+1</button>&nbsp;&nbsp;
+                <button onClick={this.death}>卸载组件</button>&nbsp;&nbsp;
+                <button onClick={this.force}>不修改状态强制更新页面</button>
+            </div>
+            )
+        }
+
+        //组件挂载完毕 常用来做一些初始化事件:开定时器 发ajax
+        componentDidMount(){
+            console.log('Count-componentDidMount');
+        }
+
+        //组件将要卸载 常用来做收尾:销毁定时器 取消订阅
+        componentWillUnmount(){
+            console.log('Count-componentWillUnmount');
+        }
+
+        //组件将要更新时 返回布尔值 控制页面更新的阀门(不写该钩子 默认该钩子返回true )
+        shouldComponentUpdate(){
+            console.log('Count-shouldComponentUpdate');
+            return true
+        }
+        //组件将要更新时
+        // UNSAFE_componentWillUpdate(){
+        //     console.log('Couont-componentWillUpdate');
+        // }
+        //组件更新完毕时的钩子
+        componentDidUpdate(){
+            console.log('Count-componentDidUpdate');
+        }
+        
+
+
+    }
+
+
+
+    ReactDOM.render(<Count count={100}/>,document.querySelector('#test'))
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

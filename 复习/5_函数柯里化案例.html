@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数柯里化案例</title>
+</head>
+<body>
+    
+
+
+
+
+
+    <script>
+        //普通函数
+        // function sum(a,b,c){
+        //     return a+b+c
+        // }
+
+        // const result=sum(1,2,3)
+        // console.log(result);
+        
+
+        //柯里化函数: 通过函数调用 继续返回函数 最后 由最内层函数统一处理所有参数
+        function sum(a){
+            return (b)=>{
+                return (c)=>{
+                    return a+b+c
+                }
+            }
+        }
+
+        console.log(sum(1)(2)(3));
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
