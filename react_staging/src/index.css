@@ -1,0 +1,11 @@
+#root{
+    width: 500px;
+    margin: 30px auto;
+    border: 1px solid rgb(201, 211, 187);
+    border-radius: 5px;
+    padding:10px;
+}
+
+ul{
+    list-style-type: none;
+}

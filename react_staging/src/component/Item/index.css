@@ -1,0 +1,32 @@
+li{
+    overflow: hidden;
+}
+li label{
+    float:left;
+    cursor: pointer;
+    width: 100%;
+    padding: 8px 0;
+    border-top:1px solid #ccc;
+}
+
+li label li input{
+    vertical-align: middle;
+    margin-right: 6px;
+    position: relative;
+    top: -1px;
+}
+
+li button{
+    float: right;
+    margin-right: 5px;
+}
+
+
+li:before{
+    content: initial;
+
+}
+
+li:last-child{
+    border-bottom: none;
+}
