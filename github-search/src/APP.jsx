@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import './App.css'
-import Search from './Search'
-import List from './List'
+import Search from './components/Search'
+import List from './components/List'
 export default class APP extends Component {
 
   render() {
     return (
 
-    <div className="container">
+    <div className="container"  >
       <Search/>     
       <List/>
   </div>
@@ -15,6 +15,8 @@ export default class APP extends Component {
     )
   }
 }
+
+
 
 
 
