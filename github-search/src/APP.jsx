@@ -11,8 +11,9 @@ export default class APP extends Component {
       <Search/>     
       <List/>
   </div>
+  
+  )
 
-    )
   }
 }
 
