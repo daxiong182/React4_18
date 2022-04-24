@@ -1,11 +1,23 @@
-import React, { Component,lazy,Suspense} from 'react'
-import { NavLink,Route } from 'react-router-dom'
+import React, { Component,Fragment,lazy,Suspense} from 'react'
+// import { NavLink,Route } from 'react-router-dom'
 
 // import About from './components/2_lazyLoad/About'
 // import Home from './components/2_lazyLoad/Home'
 
-const Home=lazy(()=>import('./components/2_lazyLoad/Home'))
-const About=lazy(()=>import('./components/2_lazyLoad/About'))
+// const Home=lazy(()=>import('./components/2_lazyLoad/Home'))
+// const About=lazy(()=>import('./components/2_lazyLoad/About'))
+
+import Fragments from './components/4_fragment'
+
+// import A from './components/5_context'
+
+import Hooks from './components/3_hooks'
+
+// import Demo from './components/6_optimize'
+
+// import Parent from './components/7_renderProps'
+
+import Parent from './components/8_errorboundary'
 
 export default class App extends Component {
   render() {
@@ -38,10 +50,20 @@ export default class App extends Component {
              </div>
          </div> */}
 
-         
+
+         {/* <Hooks/> */}
+
+         {/* <Fragments /> */}
+
+         {/* <A/> */}
+
+         <Fragment >
+
+         {/* <Demo/> */}
+         <Parent />
 
 
-
+         </Fragment>
 
       </div>
     )
